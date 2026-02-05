@@ -1,4 +1,4 @@
-module dff(input D,clk,output reg Q);
+module d_latch(input D,clk,output reg Q);
   always @(clk or D)
 begin
   if (clk)
