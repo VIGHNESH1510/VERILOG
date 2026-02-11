@@ -4,16 +4,16 @@ genvar i,j;
 generate
   for(i=0;i<N;i=i+1)
   begin
-    if(i==0)
-      assign T[i] = Q[N-1] ^ Q[i];
+    if(i==N-1)
+      assign T[i] = Q[0] ^ Q[i];
     else
-      assign T[i] = Q[i-1] ^ Q[i];
+      assign T[i] = Q[i+1] ^ Q[i];
   end
 endgenerate
 generate
   for(j=0;j<N;j=j+1)
   begin
-    TFF t(.clk(clk),.reset(reset),.T(T[j]),.data(j==0? 1'b1:1'b0),.Q(Q[j]));
+    TFF t(.clk(clk),.reset(reset),.T(T[j]),.data(j==(N-1)? 1'b1:1'b0),.Q(Q[j]));
   end
 endgenerate
 endmodule
