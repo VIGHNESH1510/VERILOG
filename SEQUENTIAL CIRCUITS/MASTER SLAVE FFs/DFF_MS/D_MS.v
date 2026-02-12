@@ -1,12 +1,12 @@
 module D_ms(input clk,D,reset,output Q);
 wire q1,T;
   D_latch d(~clk,D,reset,q1);     // MASTER D latch
-  D_latch d1(clk,q1,Q); // SLAVE D latch
+  D_latch d1(clk,q1,reset,Q); // SLAVE D latch
   
 // assign T= q1^Q;               // SLAVE T latch
  //T_latch t(clk,T,reset,Q);
 
-  //SR_latch s(clk,q1,~q1,Q);     // SLAVE SR/JK latch
+  //SR_latch s(clk,q1,~q1,reset,Q);     // SLAVE SR/JK latch
 endmodule
 
 module D_latch(input clk,D,reset,output reg Q);
