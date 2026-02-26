@@ -15,7 +15,7 @@
    for(i=0;i<N;i=i+1)
    begin: gen
      assign T[i] = (i==1'b0 ? 1'b1: (Q[i-1] & T[i-1]) ); //  UP COUNTER     
-     // assign T[i] = (i==1'b0 ? 1'b1: (Q[i-1] & T[i-1]) ); //  DOWN COUNTER
+    // assign T[i] = (i==1'b0 ? 1'b1: (~Q[i-1] & T[i-1]) ); //  DOWN COUNTER
       T_FF ins(.clk(clk),.rst(reset),.T(T[i]),.Q(Q[i]));
    end
  endgenerate
